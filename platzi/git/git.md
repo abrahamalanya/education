@@ -52,9 +52,54 @@ git tag -d <nombre_tag>
 git push origin :refs/tags/<nombre_tag>
 ```
 ## Manejo de ramas en github
+La rama principal es `main`
+- Visualizar todas las ramas(`branch`)
+```
+git show-branch --all
+```
 
+- Git muestra las historias de manera visual - funciona en `win10`
+```
+gitk
+```
+
+- Muestra ramas `branch` en el index
+```
+git branch
+```
+
+- Subir nuestra rama `branch` a Github, primero debemos estar en la rama que deseamos subir
+```
+git push origin <nombre_branch>
+```
+
+- Podemos crear nuevas ramas `branch` y subirlo al instante desde `master` o `main`
+```
+git branch <nueva_rama>
+git branch <nueva_rama2>
+git push origin <nueva_rama>
+git push origin <nueva_rama2>
+```
+
+## Configurar m&uacute;ltiples colaboradores en un repositorio de GitHub
+- Clonar un repositorio
+```
+git clone <url_repositorio>
+```
+
+Para poder tener colaboradores en nuestro repositorio, debemos agregarlo como colaborador desde github, en los `setings` del repositorio.
 
 # Flujos de trabajo profesionales
+## Flujo de trabajo profesional: Haciendo merge de ramas de desarrollo a master
+## Flujo de trabajo profesional con Pull requests
+## Utilizando Pull Requests en GitHub
+## Creando un Fork, contribuyendo a un repositorio
+## Haciendo deployent a un servidor a un servidor
+## Hazme un pull request
+## Ignorar archivos en el repositorio con .gitignore
+## Readme.md es una excelente pr&aacute;ctica
+## Tu sitio web p&uacute;blico con GitHub Pages
+
 # Multiples entornos de trabajo en Git
 # Comandos de Git para casos de emergencia
 # Bonus sobre Git y Github
