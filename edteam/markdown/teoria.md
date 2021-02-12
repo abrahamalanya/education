@@ -31,7 +31,7 @@ console.log('hola mundo')
     - `[palabra_clave]: ruta`
 
 ## Imagen
-- ![Github animado](./img/github.png)
+- ![Github animado](../../images/github.png)
 - `![texto_alternativo](ruta_imagen)`
 - Uso varias veces de la misma imagen 
     - se usa = `![texto_alternativo][palabra_clave]`
