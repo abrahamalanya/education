@@ -109,8 +109,32 @@ git push origin master
 ```
 
 ## Flujo de trabajo profesional con Pull requests
+Generalmente no se debe realizar `push` al master en los equipos de desarrollo, antes de eso se debe realizar un `code review` por eso existe el `pull request`
+
+En nuestra rama tenemos el `master` o `main` como el branch principal que se conecta al servidor principal y tenemos otra que el `staging develop` que es sirve como una previa antes de suber todo al `master o main`.
+
+`Pull Request` es una caracteristicas de GitHub
+Las personas que realizan todo este desarrollo se les conoce como los **DevOps**
+
 ## Utilizando Pull Requests en GitHub
+Para los Pull Request es como un commit intermedio
+
 ## Creando un Fork, contribuyendo a un repositorio
+Podemos aportar a un proyecto publico, realizando un fork al repositorio.
+
+- Los cambios se suben
+```git
+git push
+```
+- Si el proyecto original tiene cambios, podemos traer esos cambios a nuestro local
+```git
+git remote add upstream <url_repo_original>
+git pull upstream master
+git commit -am "Fusion"
+git push origin master
+```
+
+
 ## Haciendo deployent a un servidor a un servidor
 ## Hazme un pull request
 ## Ignorar archivos en el repositorio con .gitignore
