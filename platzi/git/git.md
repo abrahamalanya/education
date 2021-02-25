@@ -134,13 +134,161 @@ git commit -am "Fusion"
 git push origin master
 ```
 
-
 ## Haciendo deployent a un servidor a un servidor
+Se sube en el servidor, todo nuestro proyecto para visualizar todo el proyecto.
+A todo ese se le conoce como el trabajo de los **DevOps**
+
 ## Hazme un pull request
+Pasos para hacer el PR a Freddy
+
+- realizamos un fork
+- Clonamos el proyecto
+```git
+git clone <url_repositorio>
+```
+-Realizamos los cambios
+```git
+git commit -am "Colocando el nombre"
+git push
+```
+- En GitHub solicitamos el PR y esperamos a que hagan el merge.
+
 ## Ignorar archivos en el repositorio con .gitignore
+Se crea un archivo `.gitignore`
+
 ## Readme.md es una excelente pr&aacute;ctica
+Es la presentacion de nuestro repositorio, es lo que se muestra primero al entrar a un repositorio, esta escrito en markdown `.md`
+
 ## Tu sitio web p&uacute;blico con GitHub Pages
+En settings buscamos una opcion GitHub Pages, y seleccionamos la rama que deseamos mostrar en la p&aacute;gina y listo.
 
 # Multiples entornos de trabajo en Git
+## Git Rebase: Reorganizando el trabajo realizado
+Se recomienda utilizar en repositorios locales, son cambios silencioso.
+- Primero se realiza `rebase` en la rama a la que cambia
+- Segundo se realiza `rebase` a la rama final
+
+```git
+git branch experimento
+git checkout experimento
+git commit -am "mensaje de cmabios modificados"
+git rebase master
+
+git checkout master
+git rebase experimento
+
+git push origin master
+```
+
+***Nota:*** Si hay cambios en master y luego realizamos el commit y cambiamos a la rama `experimento`, podemos realizar el `git rebase master` y en las historias se muesta como se el ultimo cambio de master fuera el checkout inicial. Luego de terminar tus cambios en `experimento`, regresar a `master` y realizas el `git rebase experimento` y en las historias no existio los commit de la rama `experimento`.
+
+## Git Stash: Guardar cambios en memoria y recuperarlos
+Es una forma util para tener en temporal nuestros cambios y moverlo entre ramas
+```git
+#creamos un stash
+git stash
+
+#listar los stash
+git stash list
+
+#abrimos el stash que guardamos
+git stash pop
+
+#llevar nuestro stash a una rama
+git stash branch <name_branch>
+
+#Borrar un stash
+git stash drop
+```
+## Git Clean: Limpiar tu proyecto de archivos no deseados
+`git clean` solo borra las cosas que puede indexar
+
+`git clean` detecta archivos nuevos, no es necesario que se trate de una copia de archivo, suficiente con que sea un archivo nuevo que creamos lo detectara
+```git
+#Muestra una previa de lo que va eliminar
+git clean --dry-run
+
+#Elimina todo lo que mostro, excepto copias carpetas con mismos archivos, eso lo realizamos de manera manual
+git clean -f
+
+#Tampoco elimina archivos que estan en .gitignore
+```
+## Git Cherry-pick: Traer commits viejos al head de un branch
+```git
+git cherry-pick <hash_commit_or_historie>
+```
+
 # Comandos de Git para casos de emergencia
+## Reconstruir commits en Git con amend
+Reconstruye el ultimo commit que realizamos 
+```git
+git commit --amend
+git commit --amend -m "mensaje nuevo"
+git commit --amend --no-edit #se utiliza el utlimo commit de la historia
+
+#ver las estadisticas de los cambios
+git --stat
+```
+
+## Git Reset y Reflog: &uacute;sese en caso de emergencia
+```git
+#Muestra todos los cambios del repositorio
+git reflog
+```
+
+```git
+git reset --hard <hash de historia>
+```
+
+## Buscar en archivos y commits de Git con Grep y Log
+- Aqui buscamos palabras en todo nuestro repositorio
+```git
+#muestra donde usamos tal palabra
+git grep <texto>
+
+#muestra donde usamos cierta palabra  y que linea esta
+git grep -n <texto>
+
+#cuenta la cantidad de veces que utilizamos una palabra
+git grep -c <texto>
+
+#para utilizar que etiqueta utilizamos usamos comillas "<p>"
+git grep "<etiqueta_html>"
+```
+
+- Aqui buscamos palabras en todo nuestra historia de commits
+```git
+git log -S "<texto a buscar>"
+```
+
 # Bonus sobre Git y Github
+## Comandos y recursos colaborativos en Git y GitHub
+```git
+git shortlog -sn #cantidad commits del equipo
+git shortlog -sn --all #todos los commit del equipo
+git shortlog -sn --all --no-merge #todos los commits sin incluir los merge
+
+#colocar un alias en la configuracion de git
+git config --global alias.stats "git shortlog -sn --all --no-merge"
+git stats
+
+#Visualizamos que cambios hizo quien de cierto archivo
+git blame <name_archivo>
+git blame -c <name_archivo> #muestra de manera mas ordena, identada el codigo
+git blame css/estilos.css -L35,53 #muestra que cambios se realizo de tal linea hasta cierta linea
+
+#Ramas
+git branch #muestra ramas locales
+git branch -r #muestra ramas remotas
+git branch -a #muestra ramas locales y remotas
+
+#Visualizar un manual de cada comando
+git <comand> --help
+```
+
+## Tu futuro con Git y Github
+- Travis
+- Jenkins = https://platzi.com/cursos/jenkins-basico/
+- Azure DevOps
+- Git Lab = https://platzi.com/cursos/gitlab/
+- Curso de DevOps = https://platzi.com/cursos/devops/
